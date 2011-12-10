@@ -44,7 +44,7 @@ static void plot_point (RGB *data, int x, int y, int size);
 	[self clear:nil];
 	
 	struct timeval start, end;
-    gettimeofday(&start, NULL);
+	gettimeofday(&start, NULL);
 	
 	if ([_algorithmType indexOfSelectedItem] == 0) {
 		[self computeLinearly];
@@ -58,8 +58,8 @@ static void plot_point (RGB *data, int x, int y, int size);
 	
 	gettimeofday(&end, NULL);
 	
-    double fstart = (start.tv_sec * 1000000.0 + start.tv_usec) / 1000000.0;
-    double fend = (end.tv_sec * 1000000.0 + end.tv_usec) / 1000000.0;
+	double fstart = (start.tv_sec * 1000000.0 + start.tv_usec) / 1000000.0;
+	double fend = (end.tv_sec * 1000000.0 + end.tv_usec) / 1000000.0;
 	
 	[_statusField setStringValue:[NSString stringWithFormat:@"Took %.3f seconds", fend - fstart]];
 }
