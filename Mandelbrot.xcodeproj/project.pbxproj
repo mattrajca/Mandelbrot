@@ -1,0 +1,301 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C97C0762142E66B5000FE768 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97C0761142E66B5000FE768 /* OpenCL.framework */; };
+		C97C0764142E66E3000FE768 /* mandelbrot.cl in Sources */ = {isa = PBXBuildFile; fileRef = C97C0763142E66E3000FE768 /* mandelbrot.cl */; };
+		C9C0019D142D7068001C1129 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C0019C142D7068001C1129 /* OpenGL.framework */; };
+		C9E6378D142C42E3006E365F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6378C142C42E3006E365F /* Cocoa.framework */; };
+		C9E63799142C42E3006E365F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E63798142C42E3006E365F /* main.m */; };
+		C9E637A0142C42E3006E365F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6379F142C42E3006E365F /* AppDelegate.m */; };
+		C9E637A3142C42E3006E365F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9E637A1142C42E3006E365F /* MainMenu.xib */; };
+		C9E637AE142C4786006E365F /* MandelView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E637AD142C4786006E365F /* MandelView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C93AC70F1492F334002A8FC2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C93AC7101492F596002A8FC2 /* Complex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Complex.h; sourceTree = "<group>"; };
+		C97C0761142E66B5000FE768 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		C97C0763142E66E3000FE768 /* mandelbrot.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = mandelbrot.cl; sourceTree = "<group>"; };
+		C9C0019C142D7068001C1129 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		C9E63788142C42E3006E365F /* Mandelbrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mandelbrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9E6378C142C42E3006E365F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		C9E6378F142C42E3006E365F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		C9E63790142C42E3006E365F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C9E63791142C42E3006E365F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C9E63794142C42E3006E365F /* Mandelbrot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mandelbrot-Info.plist"; sourceTree = "<group>"; };
+		C9E63798142C42E3006E365F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C9E6379A142C42E3006E365F /* Mandelbrot-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mandelbrot-Prefix.pch"; sourceTree = "<group>"; };
+		C9E6379E142C42E3006E365F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C9E6379F142C42E3006E365F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C9E637A2142C42E3006E365F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C9E637AC142C4786006E365F /* MandelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MandelView.h; sourceTree = "<group>"; };
+		C9E637AD142C4786006E365F /* MandelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MandelView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9E63785142C42E3006E365F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9E6378D142C42E3006E365F /* Cocoa.framework in Frameworks */,
+				C97C0762142E66B5000FE768 /* OpenCL.framework in Frameworks */,
+				C9C0019D142D7068001C1129 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C97C0765142E93F6000FE768 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C9E637A1142C42E3006E365F /* MainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C9E6377D142C42E3006E365F = {
+			isa = PBXGroup;
+			children = (
+				C9E63792142C42E3006E365F /* Mandelbrot */,
+				C9E6378B142C42E3006E365F /* Frameworks */,
+				C9E63789142C42E3006E365F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C9E63789142C42E3006E365F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9E63788142C42E3006E365F /* Mandelbrot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9E6378B142C42E3006E365F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9E6378C142C42E3006E365F /* Cocoa.framework */,
+				C97C0761142E66B5000FE768 /* OpenCL.framework */,
+				C9C0019C142D7068001C1129 /* OpenGL.framework */,
+				C9E6378E142C42E3006E365F /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9E6378E142C42E3006E365F /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9E6378F142C42E3006E365F /* AppKit.framework */,
+				C9E63790142C42E3006E365F /* CoreData.framework */,
+				C9E63791142C42E3006E365F /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		C9E63792142C42E3006E365F /* Mandelbrot */ = {
+			isa = PBXGroup;
+			children = (
+				C97C0763142E66E3000FE768 /* mandelbrot.cl */,
+				C9E6379E142C42E3006E365F /* AppDelegate.h */,
+				C9E6379F142C42E3006E365F /* AppDelegate.m */,
+				C93AC7101492F596002A8FC2 /* Complex.h */,
+				C93AC70F1492F334002A8FC2 /* Constants.h */,
+				C9E637AC142C4786006E365F /* MandelView.h */,
+				C9E637AD142C4786006E365F /* MandelView.m */,
+				C97C0765142E93F6000FE768 /* Resources */,
+				C9E63793142C42E3006E365F /* Supporting Files */,
+			);
+			path = Mandelbrot;
+			sourceTree = "<group>";
+		};
+		C9E63793142C42E3006E365F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9E63798142C42E3006E365F /* main.m */,
+				C9E63794142C42E3006E365F /* Mandelbrot-Info.plist */,
+				C9E6379A142C42E3006E365F /* Mandelbrot-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9E63787142C42E3006E365F /* Mandelbrot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9E637A6142C42E3006E365F /* Build configuration list for PBXNativeTarget "Mandelbrot" */;
+			buildPhases = (
+				C9E63784142C42E3006E365F /* Sources */,
+				C9E63785142C42E3006E365F /* Frameworks */,
+				C9E63786142C42E3006E365F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mandelbrot;
+			productName = Mandelbrot;
+			productReference = C9E63788142C42E3006E365F /* Mandelbrot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9E6377F142C42E3006E365F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Matt Rajca";
+			};
+			buildConfigurationList = C9E63782142C42E3006E365F /* Build configuration list for PBXProject "Mandelbrot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C9E6377D142C42E3006E365F;
+			productRefGroup = C9E63789142C42E3006E365F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9E63787142C42E3006E365F /* Mandelbrot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9E63786142C42E3006E365F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9E637A3142C42E3006E365F /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9E63784142C42E3006E365F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9E63799142C42E3006E365F /* main.m in Sources */,
+				C97C0764142E66E3000FE768 /* mandelbrot.cl in Sources */,
+				C9E637A0142C42E3006E365F /* AppDelegate.m in Sources */,
+				C9E637AE142C4786006E365F /* MandelView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C9E637A1142C42E3006E365F /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9E637A2142C42E3006E365F /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C9E637A4142C42E3006E365F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C9E637A5142C42E3006E365F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C9E637A7142C42E3006E365F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mandelbrot/Mandelbrot-Prefix.pch";
+				INFOPLIST_FILE = "Mandelbrot/Mandelbrot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C9E637A8142C42E3006E365F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mandelbrot/Mandelbrot-Prefix.pch";
+				INFOPLIST_FILE = "Mandelbrot/Mandelbrot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9E63782142C42E3006E365F /* Build configuration list for PBXProject "Mandelbrot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9E637A4142C42E3006E365F /* Debug */,
+				C9E637A5142C42E3006E365F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9E637A6142C42E3006E365F /* Build configuration list for PBXNativeTarget "Mandelbrot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9E637A7142C42E3006E365F /* Debug */,
+				C9E637A8142C42E3006E365F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C9E6377F142C42E3006E365F /* Project object */;
+}

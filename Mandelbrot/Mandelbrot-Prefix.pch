@@ -1,0 +1,9 @@
+//
+// Prefix header for all source files of the 'Mandelbrot' target in the 'Mandelbrot' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif
+
+#import "Constants.h"
