@@ -1,0 +1,4 @@
+Mandelbrot
+==========
+
+This sample OS X application illustrates the speed improvements that can be attained by leveraging OpenCL in computationally-intensive programs (in this case, a Mandelbrot set renderer). On a quad-core iMac, the OpenCL, GPU-backed algorithm shows a speed improvement of ~700x over the linear algorithm. Note that Mac OS X 10.7 "Lion" is required to compile the project due to the use of the GCD-based OpenCL API.
