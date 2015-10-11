@@ -14,19 +14,18 @@
 #import "Complex.h"
 #import "mandelbrot.cl.h"
 
+@interface AppDelegate ()
+
+@property (nonatomic, strong) IBOutlet NSWindow *window;
+@property (nonatomic, weak) IBOutlet NSPopUpButton *algorithmType;
+@property (nonatomic, weak) IBOutlet MandelView *mandelView;
+@property (nonatomic, weak) IBOutlet NSTextField *statusField;
+
+@end
+
 @implementation AppDelegate
 
 #define MAX_ITER 20
-
-@synthesize window = _window, algorithmType = _algorithmType;
-@synthesize mandelView = _mandelView, statusField = _statusField;
-
-static void plot_point (RGB *data, int x, int y, int size);
-
-- (void)dealloc {
-	[_window release];
-	[super dealloc];
-}
 
 - (void)awakeFromNib {
 	CGLContextObj context = [[_mandelView openGLContext] CGLContextObj];
@@ -94,8 +93,6 @@ static void plot_point (RGB *data, int x, int y, int size);
 	
 	[_mandelView allocateTextureWithData:data];
 	free(data);
-	
-	dispatch_release(queue);
 }
 
 - (void)computeUsingCL {
@@ -116,7 +113,6 @@ static void plot_point (RGB *data, int x, int y, int size);
 	});
 	
 	gcl_release_image(image);
-	dispatch_release(queue);
 }
 
 static void plot_point (RGB *data, int x, int y, int size) {

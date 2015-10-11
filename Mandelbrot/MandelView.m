@@ -79,7 +79,6 @@
 
 - (void)dealloc {
 	[self clear];
-	[super dealloc];
 }
 
 @end
