@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9058" systemVersion="15A282b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9058" systemVersion="15A282b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9058"/>
@@ -11,7 +11,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
                 <menuItem title="Mandelbrot" id="56">
@@ -649,18 +649,20 @@
         <window title="Mandelbrot" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" frameAutosaveName="MainWindow" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <rect key="contentRect" x="676" y="425" width="512" height="584"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
-            <view key="contentView" id="372">
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" wantsLayer="YES" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="512" height="584"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <popUpButton verticalHuggingPriority="750" id="540">
-                        <rect key="frame" x="17" y="546" width="156" height="26"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="540">
+                        <rect key="frame" x="18" y="540" width="165" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="160" id="NQy-w1-Ujl"/>
+                        </constraints>
                         <animations/>
                         <popUpButtonCell key="cell" type="push" title="Linear" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="543" id="541">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="menu"/>
                             <menu key="menu" title="OtherViews" id="542">
                                 <items>
                                     <menuItem title="Linear" state="on" id="543">
@@ -670,13 +672,38 @@
                                     <menuItem title="CL" id="559">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                     </menuItem>
+                                    <menuItem title="Metal" id="cgW-lx-uog">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="setUpRenderer:" target="494" id="IU6-E3-K1H"/>
+                        </connections>
                     </popUpButton>
-                    <button verticalHuggingPriority="750" id="538">
-                        <rect key="frame" x="172" y="542" width="86" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="563">
+                        <rect key="frame" x="457" y="4" width="37" height="14"/>
+                        <animations/>
+                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="Ready" id="564">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mcg-1o-OFX">
+                        <rect key="frame" x="182" y="536" width="88" height="32"/>
+                        <animations/>
+                        <buttonCell key="cell" type="push" title="Prepare" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5ou-YH-Qhq">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="prepare:" target="494" id="2Kf-q5-qc1"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="538">
+                        <rect key="frame" x="270" y="536" width="84" height="32"/>
                         <animations/>
                         <buttonCell key="cell" type="push" title="Render" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="539">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -686,9 +713,8 @@
                             <action selector="render:" target="494" id="550"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" id="560">
-                        <rect key="frame" x="424" y="542" width="74" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="560">
+                        <rect key="frame" x="426" y="536" width="72" height="32"/>
                         <animations/>
                         <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="561">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -698,29 +724,36 @@
                             <action selector="clear:" target="494" id="562"/>
                         </connections>
                     </button>
-                    <openGLView useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" id="548" customClass="MandelView">
-                        <rect key="frame" x="0.0" y="22" width="512" height="512"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ovn-1C-LzN">
+                        <rect key="frame" x="0.0" y="20" width="512" height="512"/>
                         <animations/>
-                    </openGLView>
-                    <textField verticalHuggingPriority="750" id="563">
-                        <rect key="frame" x="349" y="4" width="146" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <animations/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" title="Ready" id="564">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
+                    </customView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="540" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="20" symbolic="YES" id="0YB-TD-VLy"/>
+                    <constraint firstItem="540" firstAttribute="top" secondItem="372" secondAttribute="top" constant="20" symbolic="YES" id="26d-9p-uxe"/>
+                    <constraint firstItem="ovn-1C-LzN" firstAttribute="leading" secondItem="372" secondAttribute="leading" id="3Tr-S1-0bO"/>
+                    <constraint firstItem="mcg-1o-OFX" firstAttribute="leading" secondItem="540" secondAttribute="trailing" constant="8" symbolic="YES" id="9yt-ga-6Ky"/>
+                    <constraint firstAttribute="bottom" secondItem="563" secondAttribute="bottom" constant="4" id="DQi-va-Rxq"/>
+                    <constraint firstAttribute="bottom" secondItem="ovn-1C-LzN" secondAttribute="bottom" constant="20" symbolic="YES" id="ISq-Do-zmx"/>
+                    <constraint firstAttribute="trailing" secondItem="ovn-1C-LzN" secondAttribute="trailing" id="Ogd-p3-R52"/>
+                    <constraint firstItem="538" firstAttribute="leading" secondItem="mcg-1o-OFX" secondAttribute="trailing" constant="12" symbolic="YES" id="RG2-lB-XTL"/>
+                    <constraint firstAttribute="trailing" secondItem="563" secondAttribute="trailing" constant="20" symbolic="YES" id="aPr-r2-p7O"/>
+                    <constraint firstItem="560" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="538" secondAttribute="trailing" constant="12" symbolic="YES" id="aym-og-F8i"/>
+                    <constraint firstItem="mcg-1o-OFX" firstAttribute="baseline" secondItem="540" secondAttribute="baseline" id="bul-K9-Jxa"/>
+                    <constraint firstItem="538" firstAttribute="baseline" secondItem="mcg-1o-OFX" secondAttribute="baseline" id="djM-vd-3eb"/>
+                    <constraint firstItem="ovn-1C-LzN" firstAttribute="top" secondItem="538" secondAttribute="bottom" constant="11" id="kPa-Bk-19y"/>
+                    <constraint firstAttribute="trailing" secondItem="560" secondAttribute="trailing" constant="20" symbolic="YES" id="qmD-ZD-6QK"/>
+                    <constraint firstItem="560" firstAttribute="baseline" secondItem="538" secondAttribute="baseline" id="xeb-sl-fvh"/>
+                </constraints>
                 <animations/>
             </view>
+            <point key="canvasLocation" x="281.5" y="386"/>
         </window>
         <customObject id="494" customClass="AppDelegate">
             <connections>
                 <outlet property="algorithmType" destination="540" id="558"/>
-                <outlet property="mandelView" destination="548" id="551"/>
+                <outlet property="containerView" destination="ovn-1C-LzN" id="d14-iE-3nd"/>
                 <outlet property="statusField" destination="563" id="565"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>
