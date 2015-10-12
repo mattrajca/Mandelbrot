@@ -16,6 +16,8 @@ class MetalRenderer: NSObject, Renderer {
 	private var outputTextureDescriptor: MTLTextureDescriptor!
 	private var computePipelineState: MTLComputePipelineState?
 
+	@objc var isPrepared = false
+
 	init(device: MTLDevice) {
 		self.device = device
 
@@ -45,6 +47,8 @@ class MetalRenderer: NSObject, Renderer {
 		outputTextureDescriptor.resourceOptions = [.StorageModePrivate]
 		outputTextureDescriptor.storageMode = MTLStorageMode.Private
 		outputTextureDescriptor.usage = [.ShaderWrite]
+
+		isPrepared = true
 	}
 
 	func renderInContext(context: RenderContext) {

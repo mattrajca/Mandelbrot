@@ -41,6 +41,19 @@
 	[self setUpRenderer:nil];
 }
 
+- (BOOL)validateToolbarItem:(NSToolbarItem *)theItem {
+	if (theItem.action == @selector(prepare:)) {
+		return [_algorithmType indexOfSelectedItem] == 3;
+	} else if (theItem.action == @selector(render:)) {
+		if ([_algorithmType indexOfSelectedItem] == 3)
+			return _renderer.isPrepared;
+		else
+			return YES;
+	}
+
+	return YES;
+}
+
 - (BOOL)hasGLView {
 	return [_renderView isKindOfClass:[MandelView class]];
 }
@@ -180,10 +193,13 @@
 		default:
 			break;
 	}
+
+	[self.window.toolbar validateVisibleItems];
 }
 
 - (IBAction)prepare:(id)sender {
 	[_renderer prepare];
+	[self.window.toolbar validateVisibleItems];
 }
 
 @end

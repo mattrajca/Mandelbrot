@@ -10,6 +10,10 @@
 
 @implementation GCDRenderer
 
+- (BOOL)isPrepared {
+	return YES;
+}
+
 - (void)prepare { }
 
 - (void)renderInContext:(id<RenderContext>)context {

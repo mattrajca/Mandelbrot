@@ -14,6 +14,10 @@
 
 @implementation CLRenderer
 
+- (BOOL)isPrepared {
+	return YES;
+}
+
 - (void)prepare { }
 
 - (void)renderInContext:(id<RenderContext>)context {

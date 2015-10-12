@@ -22,6 +22,8 @@
 
 @protocol Renderer
 
+@property (nonatomic, readonly) BOOL isPrepared;
+
 - (void)prepare;
 - (void)renderInContext:(id <RenderContext>)context;
 
