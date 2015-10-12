@@ -7,9 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90A90B41BCB209F004270B7 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90A90B31BCB209F004270B7 /* MetalKit.framework */; };
+		C970335D1BCACE5A00901E22 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C970335C1BCACE5A00901E22 /* Shaders.metal */; };
+		C970335F1BCAD12A00901E22 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C970335E1BCAD12A00901E22 /* Metal.framework */; };
+		C97033611BCADBF600901E22 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97033601BCADBF600901E22 /* QuartzCore.framework */; };
 		C97C0762142E66B5000FE768 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97C0761142E66B5000FE768 /* OpenCL.framework */; };
 		C97C0764142E66E3000FE768 /* mandelbrot.cl in Sources */ = {isa = PBXBuildFile; fileRef = C97C0763142E66E3000FE768 /* mandelbrot.cl */; };
+		C9B2F62A1BCB0C3D00A6910E /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B2F6291BCB0C3D00A6910E /* MetalRenderer.swift */; };
 		C9C0019D142D7068001C1129 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C0019C142D7068001C1129 /* OpenGL.framework */; };
+		C9D318121BCB5E56007F0BF2 /* MetalTextureView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D318111BCB5E56007F0BF2 /* MetalTextureView.m */; };
+		C9D318181BCB600D007F0BF2 /* LinearRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D318171BCB600D007F0BF2 /* LinearRenderer.m */; };
+		C9D3181B1BCB6067007F0BF2 /* GCDRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D3181A1BCB6067007F0BF2 /* GCDRenderer.m */; };
+		C9D3181E1BCB6091007F0BF2 /* RGBA.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D3181D1BCB6091007F0BF2 /* RGBA.m */; };
+		C9D318211BCB61E0007F0BF2 /* CLRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D318201BCB61E0007F0BF2 /* CLRenderer.m */; };
 		C9E6378D142C42E3006E365F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E6378C142C42E3006E365F /* Cocoa.framework */; };
 		C9E63799142C42E3006E365F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E63798142C42E3006E365F /* main.m */; };
 		C9E637A0142C42E3006E365F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E6379F142C42E3006E365F /* AppDelegate.m */; };
@@ -18,11 +28,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C90A90B31BCB209F004270B7 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		C93AC70F1492F334002A8FC2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C93AC7101492F596002A8FC2 /* Complex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Complex.h; sourceTree = "<group>"; };
+		C970335C1BCACE5A00901E22 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		C970335E1BCAD12A00901E22 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		C97033601BCADBF600901E22 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C97C0761142E66B5000FE768 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
 		C97C0763142E66E3000FE768 /* mandelbrot.cl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.opencl; path = mandelbrot.cl; sourceTree = "<group>"; };
+		C9B2F6281BCB0C3D00A6910E /* Mandelbrot-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mandelbrot-Bridging-Header.h"; sourceTree = "<group>"; };
+		C9B2F6291BCB0C3D00A6910E /* MetalRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
 		C9C0019C142D7068001C1129 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		C9D318101BCB5E56007F0BF2 /* MetalTextureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalTextureView.h; sourceTree = "<group>"; };
+		C9D318111BCB5E56007F0BF2 /* MetalTextureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetalTextureView.m; sourceTree = "<group>"; };
+		C9D318131BCB5F2F007F0BF2 /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
+		C9D318161BCB600D007F0BF2 /* LinearRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinearRenderer.h; sourceTree = "<group>"; };
+		C9D318171BCB600D007F0BF2 /* LinearRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinearRenderer.m; sourceTree = "<group>"; };
+		C9D318191BCB6067007F0BF2 /* GCDRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDRenderer.h; sourceTree = "<group>"; };
+		C9D3181A1BCB6067007F0BF2 /* GCDRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDRenderer.m; sourceTree = "<group>"; };
+		C9D3181C1BCB6091007F0BF2 /* RGBA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGBA.h; sourceTree = "<group>"; };
+		C9D3181D1BCB6091007F0BF2 /* RGBA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGBA.m; sourceTree = "<group>"; };
+		C9D3181F1BCB61E0007F0BF2 /* CLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLRenderer.h; sourceTree = "<group>"; };
+		C9D318201BCB61E0007F0BF2 /* CLRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLRenderer.m; sourceTree = "<group>"; };
 		C9E63788142C42E3006E365F /* Mandelbrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mandelbrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E6378C142C42E3006E365F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C9E6378F142C42E3006E365F /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -43,7 +70,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C90A90B41BCB209F004270B7 /* MetalKit.framework in Frameworks */,
+				C97033611BCADBF600901E22 /* QuartzCore.framework in Frameworks */,
 				C9E6378D142C42E3006E365F /* Cocoa.framework in Frameworks */,
+				C970335F1BCAD12A00901E22 /* Metal.framework in Frameworks */,
 				C97C0762142E66B5000FE768 /* OpenCL.framework in Frameworks */,
 				C9C0019D142D7068001C1129 /* OpenGL.framework in Frameworks */,
 			);
@@ -80,7 +110,10 @@
 		C9E6378B142C42E3006E365F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C90A90B31BCB209F004270B7 /* MetalKit.framework */,
+				C97033601BCADBF600901E22 /* QuartzCore.framework */,
 				C9E6378C142C42E3006E365F /* Cocoa.framework */,
+				C970335E1BCAD12A00901E22 /* Metal.framework */,
 				C97C0761142E66B5000FE768 /* OpenCL.framework */,
 				C9C0019C142D7068001C1129 /* OpenGL.framework */,
 				C9E6378E142C42E3006E365F /* Other Frameworks */,
@@ -102,12 +135,26 @@
 			isa = PBXGroup;
 			children = (
 				C97C0763142E66E3000FE768 /* mandelbrot.cl */,
+				C970335C1BCACE5A00901E22 /* Shaders.metal */,
 				C9E6379E142C42E3006E365F /* AppDelegate.h */,
 				C9E6379F142C42E3006E365F /* AppDelegate.m */,
 				C93AC7101492F596002A8FC2 /* Complex.h */,
 				C93AC70F1492F334002A8FC2 /* Constants.h */,
+				C9D3181F1BCB61E0007F0BF2 /* CLRenderer.h */,
+				C9D318201BCB61E0007F0BF2 /* CLRenderer.m */,
+				C9D318191BCB6067007F0BF2 /* GCDRenderer.h */,
+				C9D3181A1BCB6067007F0BF2 /* GCDRenderer.m */,
+				C9D318161BCB600D007F0BF2 /* LinearRenderer.h */,
+				C9D318171BCB600D007F0BF2 /* LinearRenderer.m */,
 				C9E637AC142C4786006E365F /* MandelView.h */,
 				C9E637AD142C4786006E365F /* MandelView.m */,
+				C9B2F6291BCB0C3D00A6910E /* MetalRenderer.swift */,
+				C9D318101BCB5E56007F0BF2 /* MetalTextureView.h */,
+				C9D318111BCB5E56007F0BF2 /* MetalTextureView.m */,
+				C9B2F6281BCB0C3D00A6910E /* Mandelbrot-Bridging-Header.h */,
+				C9D318131BCB5F2F007F0BF2 /* Renderer.h */,
+				C9D3181C1BCB6091007F0BF2 /* RGBA.h */,
+				C9D3181D1BCB6091007F0BF2 /* RGBA.m */,
 				C97C0765142E93F6000FE768 /* Resources */,
 				C9E63793142C42E3006E365F /* Supporting Files */,
 			);
@@ -188,8 +235,15 @@
 			files = (
 				C9E63799142C42E3006E365F /* main.m in Sources */,
 				C97C0764142E66E3000FE768 /* mandelbrot.cl in Sources */,
+				C9B2F62A1BCB0C3D00A6910E /* MetalRenderer.swift in Sources */,
 				C9E637A0142C42E3006E365F /* AppDelegate.m in Sources */,
+				C9D3181B1BCB6067007F0BF2 /* GCDRenderer.m in Sources */,
+				C9D318211BCB61E0007F0BF2 /* CLRenderer.m in Sources */,
+				C9D3181E1BCB6091007F0BF2 /* RGBA.m in Sources */,
 				C9E637AE142C4786006E365F /* MandelView.m in Sources */,
+				C9D318181BCB600D007F0BF2 /* LinearRenderer.m in Sources */,
+				C9D318121BCB5E56007F0BF2 /* MetalTextureView.m in Sources */,
+				C970335D1BCACE5A00901E22 /* Shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,12 +350,16 @@
 		C9E637A7142C42E3006E365F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mandelbrot/Mandelbrot-Prefix.pch";
 				INFOPLIST_FILE = "Mandelbrot/Mandelbrot-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MattRajca.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mandelbrot/Mandelbrot-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -309,12 +367,15 @@
 		C9E637A8142C42E3006E365F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mandelbrot/Mandelbrot-Prefix.pch";
 				INFOPLIST_FILE = "Mandelbrot/Mandelbrot-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MattRajca.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mandelbrot/Mandelbrot-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
