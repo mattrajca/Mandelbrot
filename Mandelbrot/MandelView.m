@@ -7,11 +7,22 @@
 
 #import "MandelView.h"
 
+#import <OpenCL/OpenCL.h>
 #import <OpenGL/gl.h>
 
 @implementation MandelView {
 	BOOL _hasTexture;
 	GLuint _texture;
+}
+
+- (instancetype)initWithFrame:(NSRect)frameRect pixelFormat:(NSOpenGLPixelFormat *)format {
+	if (!(self = [super initWithFrame:frameRect pixelFormat:format]))
+		return nil;
+
+	CGLContextObj context = [[self openGLContext] CGLContextObj];
+	gcl_gl_set_sharegroup(CGLGetShareGroup(context));
+
+	return self;
 }
 
 - (GLuint)allocateTextureWithData:(void *)data {
@@ -31,15 +42,18 @@
 	return _texture;
 }
 
-- (void)clear {
+- (void)_deleteTexture {
 	if (!_hasTexture)
 		return;
-	
+
 	glDeleteTextures(1, &_texture);
-	
+
 	_texture = 0;
 	_hasTexture = NO;
-	
+}
+
+- (void)clear {
+	[self _deleteTexture];
 	[self display];
 }
 
@@ -78,7 +92,7 @@
 }
 
 - (void)dealloc {
-	[self clear];
+	[self _deleteTexture];
 }
 
 @end
