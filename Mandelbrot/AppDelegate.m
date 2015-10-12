@@ -147,7 +147,7 @@
 			break;
 		case 3:
 			[self _setUpMetalRenderer];
-			_renderer = [[MetalRenderer alloc] init];
+			_renderer = [[MetalRenderer alloc] initWithDevice:_metalDevice];
 			break;
 		default:
 			break;
