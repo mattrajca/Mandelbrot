@@ -8,8 +8,4 @@
 #import "MandelView.h"
 
 @interface AppDelegate : NSObject < NSApplicationDelegate >
-
-- (IBAction)render:(id)sender;
-- (IBAction)clear:(id)sender;
-
 @end
