@@ -19,9 +19,6 @@
 	if (!(self = [super initWithFrame:frameRect pixelFormat:format]))
 		return nil;
 
-	CGLContextObj context = [[self openGLContext] CGLContextObj];
-	gcl_gl_set_sharegroup(CGLGetShareGroup(context));
-
 	return self;
 }
 

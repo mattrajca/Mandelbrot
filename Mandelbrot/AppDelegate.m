@@ -31,12 +31,17 @@
 	NSView *_renderView;
 	id <Renderer> _renderer;
 	id <MTLDevice> _metalDevice;
+	NSOpenGLView *_cachedGLView;
 }
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
 
 	[self setUpRenderer:nil];
+}
+
+- (BOOL)hasGLView {
+	return [_renderView isKindOfClass:[MandelView class]];
 }
 
 - (MandelView *)GLView {
@@ -96,7 +101,7 @@
 }
 
 - (IBAction)clear:(id)sender {
-	if (self.GLView) {
+	if (self.hasGLView) {
 		[self.GLView clear];
 	} else if (self.metalView) {
 		self.metalView.texture = nil;
@@ -109,14 +114,26 @@
 	NSOpenGLPixelFormatAttribute attributes[] = {
 		NSOpenGLPFAAccelerated,
 		NSOpenGLPFADepthSize, 24,
-		NSOpenGLPFAColorSize, 32,
+		NSOpenGLPFAColorSize, 24,
 		NSOpenGLPFAStencilSize, 16,
 		NSOpenGLPFADoubleBuffer,
+		NSOpenGLPFAAlphaSize, 8,
+		NSOpenGLPFAAllowOfflineRenderers,
 		0
 	};
 
 	NSOpenGLPixelFormat *pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attributes];
-	_renderView = [[MandelView alloc] initWithFrame:NSZeroRect pixelFormat:pixelFormat];
+
+	if (_cachedGLView) {
+		_renderView = _cachedGLView;
+	}
+	else {
+		_cachedGLView = [[MandelView alloc] initWithFrame:NSZeroRect pixelFormat:pixelFormat];
+		_renderView = _cachedGLView;
+
+		CGLContextObj context = _cachedGLView.openGLContext.CGLContextObj;
+		gcl_gl_set_sharegroup(CGLGetShareGroup(context));
+	}
 
 	[self _addRenderView];
 }
