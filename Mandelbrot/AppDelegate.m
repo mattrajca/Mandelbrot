@@ -33,6 +33,12 @@
 	id <MTLDevice> _metalDevice;
 }
 
+- (void)awakeFromNib {
+	[super awakeFromNib];
+
+	[self setUpRenderer:nil];
+}
+
 - (MandelView *)GLView {
 	if (![_renderView isKindOfClass:[MandelView class]])
 		return nil;
