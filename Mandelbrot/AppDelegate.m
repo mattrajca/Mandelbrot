@@ -40,6 +40,8 @@
 }
 
 - (MandelView *)GLView {
+	NSAssert([_renderView isKindOfClass:[MandelView class]], @"Unexpected view");
+
 	if (![_renderView isKindOfClass:[MandelView class]])
 		return nil;
 
@@ -47,6 +49,8 @@
 }
 
 - (MetalTextureView *)metalView {
+	NSAssert([_renderView isKindOfClass:[MetalTextureView class]], @"Unexpected view");
+
 	if (![_renderView isKindOfClass:[MetalTextureView class]])
 		return nil;
 
@@ -65,7 +69,7 @@
 }
 
 - (void)renderedBuffer:(RGBA *)data {
-	[self.GLView allocateTextureWithData:data];
+	[self.GLView allocateTextureWithData:(float *)data];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {

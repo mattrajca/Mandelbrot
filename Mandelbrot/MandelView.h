@@ -10,7 +10,7 @@
 
 @interface MandelView : NSOpenGLView
 
-- (GLuint)allocateTextureWithData:(void *)data;
+- (GLuint)allocateTextureWithData:(float *)data;
 - (void)clear;
 
 @end

@@ -25,7 +25,7 @@
 	return self;
 }
 
-- (GLuint)allocateTextureWithData:(void *)data {
+- (GLuint)allocateTextureWithData:(float *)data {
 	glGenTextures(1, &_texture);
 	
 	glBindTexture(GL_TEXTURE_2D, _texture);
