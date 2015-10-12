@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C90A90B41BCB209F004270B7 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90A90B31BCB209F004270B7 /* MetalKit.framework */; };
+		C95D88981BCC782D00987C81 /* Delete.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C95D88971BCC782D00987C81 /* Delete.tiff */; };
+		C95D889A1BCC785800987C81 /* Play.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C95D88991BCC785800987C81 /* Play.tiff */; };
+		C95D889C1BCC786900987C81 /* Orange Ball.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C95D889B1BCC786900987C81 /* Orange Ball.tiff */; };
 		C970335D1BCACE5A00901E22 /* Mandelbrot.metal in Sources */ = {isa = PBXBuildFile; fileRef = C970335C1BCACE5A00901E22 /* Mandelbrot.metal */; };
 		C970335F1BCAD12A00901E22 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C970335E1BCAD12A00901E22 /* Metal.framework */; };
 		C97033611BCADBF600901E22 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97033601BCADBF600901E22 /* QuartzCore.framework */; };
@@ -32,6 +35,9 @@
 		C90A90B31BCB209F004270B7 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		C93AC70F1492F334002A8FC2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C93AC7101492F596002A8FC2 /* Complex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Complex.h; sourceTree = "<group>"; };
+		C95D88971BCC782D00987C81 /* Delete.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Delete.tiff; sourceTree = "<group>"; };
+		C95D88991BCC785800987C81 /* Play.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Play.tiff; sourceTree = "<group>"; };
+		C95D889B1BCC786900987C81 /* Orange Ball.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "Orange Ball.tiff"; sourceTree = "<group>"; };
 		C970335C1BCACE5A00901E22 /* Mandelbrot.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Mandelbrot.metal; sourceTree = "<group>"; };
 		C970335E1BCAD12A00901E22 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		C97033601BCADBF600901E22 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -87,6 +93,9 @@
 		C97C0765142E93F6000FE768 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C95D88971BCC782D00987C81 /* Delete.tiff */,
+				C95D889B1BCC786900987C81 /* Orange Ball.tiff */,
+				C95D88991BCC785800987C81 /* Play.tiff */,
 				C9E637A1142C42E3006E365F /* MainMenu.xib */,
 			);
 			name = Resources;
@@ -225,7 +234,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C95D889A1BCC785800987C81 /* Play.tiff in Resources */,
 				C9E637A3142C42E3006E365F /* MainMenu.xib in Resources */,
+				C95D889C1BCC786900987C81 /* Orange Ball.tiff in Resources */,
+				C95D88981BCC782D00987C81 /* Delete.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

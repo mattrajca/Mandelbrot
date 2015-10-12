@@ -648,40 +648,20 @@
         </menu>
         <window title="Mandelbrot" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" frameAutosaveName="MainWindow" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <rect key="contentRect" x="676" y="425" width="512" height="584"/>
+            <rect key="contentRect" x="676" y="425" width="512" height="532"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="512" height="584"/>
+                <rect key="frame" x="0.0" y="0.0" width="512" height="532"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="540">
-                        <rect key="frame" x="18" y="540" width="165" height="26"/>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ovn-1C-LzN">
+                        <rect key="frame" x="0.0" y="20" width="512" height="512"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="160" id="NQy-w1-Ujl"/>
+                            <constraint firstAttribute="width" constant="512" id="Jbf-Gv-fV6"/>
+                            <constraint firstAttribute="height" constant="512" id="PCG-Mf-LBK"/>
                         </constraints>
                         <animations/>
-                        <popUpButtonCell key="cell" type="push" title="Linear" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="543" id="541">
-                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="menu"/>
-                            <menu key="menu" title="OtherViews" id="542">
-                                <items>
-                                    <menuItem title="Linear" state="on" id="543">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="GCD" tag="1" id="544"/>
-                                    <menuItem title="CL" id="559">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Metal" id="cgW-lx-uog">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                </items>
-                            </menu>
-                        </popUpButtonCell>
-                        <connections>
-                            <action selector="setUpRenderer:" target="494" id="IU6-E3-K1H"/>
-                        </connections>
-                    </popUpButton>
+                    </customView>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="563">
                         <rect key="frame" x="457" y="4" width="37" height="14"/>
                         <animations/>
@@ -691,68 +671,77 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mcg-1o-OFX">
-                        <rect key="frame" x="182" y="536" width="88" height="32"/>
-                        <animations/>
-                        <buttonCell key="cell" type="push" title="Prepare" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5ou-YH-Qhq">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="prepare:" target="494" id="2Kf-q5-qc1"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="538">
-                        <rect key="frame" x="270" y="536" width="84" height="32"/>
-                        <animations/>
-                        <buttonCell key="cell" type="push" title="Render" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="539">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="render:" target="494" id="550"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="560">
-                        <rect key="frame" x="426" y="536" width="72" height="32"/>
-                        <animations/>
-                        <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="561">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="clear:" target="494" id="562"/>
-                        </connections>
-                    </button>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="ovn-1C-LzN">
-                        <rect key="frame" x="0.0" y="20" width="512" height="512"/>
-                        <animations/>
-                    </customView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="540" firstAttribute="leading" secondItem="372" secondAttribute="leading" constant="20" symbolic="YES" id="0YB-TD-VLy"/>
-                    <constraint firstItem="540" firstAttribute="top" secondItem="372" secondAttribute="top" constant="20" symbolic="YES" id="26d-9p-uxe"/>
                     <constraint firstItem="ovn-1C-LzN" firstAttribute="leading" secondItem="372" secondAttribute="leading" id="3Tr-S1-0bO"/>
-                    <constraint firstItem="mcg-1o-OFX" firstAttribute="leading" secondItem="540" secondAttribute="trailing" constant="8" symbolic="YES" id="9yt-ga-6Ky"/>
+                    <constraint firstItem="ovn-1C-LzN" firstAttribute="top" secondItem="372" secondAttribute="top" id="5Uf-oI-19g"/>
                     <constraint firstAttribute="bottom" secondItem="563" secondAttribute="bottom" constant="4" id="DQi-va-Rxq"/>
                     <constraint firstAttribute="bottom" secondItem="ovn-1C-LzN" secondAttribute="bottom" constant="20" symbolic="YES" id="ISq-Do-zmx"/>
                     <constraint firstAttribute="trailing" secondItem="ovn-1C-LzN" secondAttribute="trailing" id="Ogd-p3-R52"/>
-                    <constraint firstItem="538" firstAttribute="leading" secondItem="mcg-1o-OFX" secondAttribute="trailing" constant="12" symbolic="YES" id="RG2-lB-XTL"/>
                     <constraint firstAttribute="trailing" secondItem="563" secondAttribute="trailing" constant="20" symbolic="YES" id="aPr-r2-p7O"/>
-                    <constraint firstItem="560" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="538" secondAttribute="trailing" constant="12" symbolic="YES" id="aym-og-F8i"/>
-                    <constraint firstItem="mcg-1o-OFX" firstAttribute="baseline" secondItem="540" secondAttribute="baseline" id="bul-K9-Jxa"/>
-                    <constraint firstItem="538" firstAttribute="baseline" secondItem="mcg-1o-OFX" secondAttribute="baseline" id="djM-vd-3eb"/>
-                    <constraint firstItem="ovn-1C-LzN" firstAttribute="top" secondItem="538" secondAttribute="bottom" constant="11" id="kPa-Bk-19y"/>
-                    <constraint firstAttribute="trailing" secondItem="560" secondAttribute="trailing" constant="20" symbolic="YES" id="qmD-ZD-6QK"/>
-                    <constraint firstItem="560" firstAttribute="baseline" secondItem="538" secondAttribute="baseline" id="xeb-sl-fvh"/>
+                    <constraint firstItem="563" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="372" secondAttribute="leading" constant="20" symbolic="YES" id="weZ-xY-yXP"/>
                 </constraints>
                 <animations/>
             </view>
-            <point key="canvasLocation" x="281.5" y="386"/>
+            <toolbar key="toolbar" implicitIdentifier="0DB22435-D151-48D7-BD94-67012125DA0A" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="small" id="P4t-8g-RdG">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="FCD67341-823F-491D-832C-00FE71F2429E" label="Implementation" paletteLabel="Implementation" id="PGz-Cg-yl8">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="100" height="26"/>
+                        <size key="maxSize" width="100" height="26"/>
+                        <popUpButton key="view" verticalHuggingPriority="750" id="eVi-zX-T2D">
+                            <rect key="frame" x="0.0" y="14" width="100" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                            <popUpButtonCell key="cell" type="roundTextured" title="Linear" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="81I-bP-oU3" id="q7Y-kL-HCo">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="2Ty-8W-sCP">
+                                    <items>
+                                        <menuItem title="Linear" state="on" id="81I-bP-oU3"/>
+                                        <menuItem title="GCD" id="3Jg-Ol-7ik"/>
+                                        <menuItem title="OpenCL" id="9Tn-XC-uab"/>
+                                        <menuItem title="Metal" id="Os9-gV-MLM">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="setUpRenderer:" target="494" id="CIx-mk-Ios"/>
+                            </connections>
+                        </popUpButton>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="95567418-A8E0-41C7-8BC9-DD1448300E9E" label="Prepare" paletteLabel="Prepare" tag="-1" image="Orange Ball" id="Gva-fI-6aK">
+                        <connections>
+                            <action selector="prepare:" target="494" id="HL2-vW-NSH"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C936773A-59CF-47CC-AD52-56C42899D370" label="Render" paletteLabel="Render" tag="-1" image="Play" id="aKA-8x-Lla">
+                        <connections>
+                            <action selector="render:" target="494" id="tRd-Ut-AuX"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="PX1-3u-Cod"/>
+                    <toolbarItem implicitItemIdentifier="2E7CF1FB-31C7-4D61-B707-D3B2A5FD0B2B" label="Clear" paletteLabel="Clear" tag="-1" image="Delete" id="3ch-E2-fy1">
+                        <connections>
+                            <action selector="clear:" target="494" id="2J4-4q-tEh"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="PGz-Cg-yl8"/>
+                    <toolbarItem reference="Gva-fI-6aK"/>
+                    <toolbarItem reference="aKA-8x-Lla"/>
+                    <toolbarItem reference="PX1-3u-Cod"/>
+                    <toolbarItem reference="3ch-E2-fy1"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <point key="canvasLocation" x="281" y="361"/>
         </window>
         <customObject id="494" customClass="AppDelegate">
             <connections>
-                <outlet property="algorithmType" destination="540" id="558"/>
+                <outlet property="algorithmType" destination="eVi-zX-T2D" id="kj5-Xf-tVw"/>
                 <outlet property="containerView" destination="ovn-1C-LzN" id="d14-iE-3nd"/>
                 <outlet property="statusField" destination="563" id="565"/>
                 <outlet property="window" destination="371" id="532"/>
@@ -760,4 +749,9 @@
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
     </objects>
+    <resources>
+        <image name="Delete" width="32" height="32"/>
+        <image name="Orange Ball" width="32" height="32"/>
+        <image name="Play" width="32" height="32"/>
+    </resources>
 </document>
