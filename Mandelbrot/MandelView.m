@@ -14,11 +14,11 @@
 	GLuint _texture;
 }
 
-- (GLuint)allocateTextureWithData:(const GLvoid *)data {
+- (GLuint)allocateTextureWithData:(void *)data {
 	glGenTextures(1, &_texture);
 	
 	glBindTexture(GL_TEXTURE_2D, _texture);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, IMAGE_SIZE, IMAGE_SIZE, 0, GL_RGB, GL_FLOAT, data);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, IMAGE_SIZE, IMAGE_SIZE, 0, GL_RGBA, GL_FLOAT, data);
 	
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -64,7 +64,7 @@
 	}
 	
 	glBindTexture(GL_TEXTURE_2D, _texture);
-	
+
 	glBegin(GL_QUADS);
 	{
 		glTexCoord2f(0.0f, 0.0f); glVertex3f(0.0f,   0.0f,   0.0f);
@@ -73,7 +73,7 @@
 		glTexCoord2f(0.0f, 1.0f); glVertex3f(0.0f,   512.0f, 0.0f);
 	}
 	glEnd();
-	
+
 	glFlush();
 }
 
