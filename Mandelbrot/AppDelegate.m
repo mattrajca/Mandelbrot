@@ -14,6 +14,7 @@
 
 #import "MetalTextureView.h"
 
+#import <OpenCL/OpenCL.h>
 #import <OpenGL/gl.h>
 #import <sys/time.h>
 
