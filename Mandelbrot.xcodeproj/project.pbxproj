@@ -13,7 +13,6 @@
 		C95D889C1BCC786900987C81 /* Orange Ball.tiff in Resources */ = {isa = PBXBuildFile; fileRef = C95D889B1BCC786900987C81 /* Orange Ball.tiff */; };
 		C970335D1BCACE5A00901E22 /* Mandelbrot.metal in Sources */ = {isa = PBXBuildFile; fileRef = C970335C1BCACE5A00901E22 /* Mandelbrot.metal */; };
 		C970335F1BCAD12A00901E22 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C970335E1BCAD12A00901E22 /* Metal.framework */; };
-		C97033611BCADBF600901E22 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97033601BCADBF600901E22 /* QuartzCore.framework */; };
 		C97C0762142E66B5000FE768 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97C0761142E66B5000FE768 /* OpenCL.framework */; };
 		C97C0764142E66E3000FE768 /* mandelbrot.cl in Sources */ = {isa = PBXBuildFile; fileRef = C97C0763142E66E3000FE768 /* mandelbrot.cl */; };
 		C9AE54251BCB70EA0050F95D /* TextureShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C9AE54241BCB70EA0050F95D /* TextureShaders.metal */; };
@@ -79,7 +78,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C90A90B41BCB209F004270B7 /* MetalKit.framework in Frameworks */,
-				C97033611BCADBF600901E22 /* QuartzCore.framework in Frameworks */,
 				C9E6378D142C42E3006E365F /* Cocoa.framework in Frameworks */,
 				C970335F1BCAD12A00901E22 /* Metal.framework in Frameworks */,
 				C97C0762142E66B5000FE768 /* OpenCL.framework in Frameworks */,
