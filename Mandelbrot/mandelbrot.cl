@@ -1,4 +1,3 @@
-#define complex_add(a, b) (float2) { (a).x + (b).x, (a).y + (b).y }
 #define complex_square(a) (float2) { (a).x * (a).x - (a).y * (a).y, (a).y * (a).x + (a).x * (a).y }
 
 kernel void mandelbrot (write_only image2d_t output) {
@@ -9,7 +8,7 @@ kernel void mandelbrot (write_only image2d_t output) {
 	float2 z = c;
 	
 	for (int i = 0; i < 20; i++) {
-		z = complex_add(complex_square(z), c);
+		z = complex_square(z) + c;
 		
 		if (dot(z, z) > 4) {
 			depth = i;
