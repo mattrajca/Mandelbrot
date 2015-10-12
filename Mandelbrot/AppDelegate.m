@@ -7,29 +7,59 @@
 
 #import "AppDelegate.h"
 
+#import "CLRenderer.h"
+#import "GCDRenderer.h"
+#import "LinearRenderer.h"
+#import "Mandelbrot-Swift.h"
+
+#import "MetalTextureView.h"
+
 #import <OpenGL/gl.h>
-#import <OpenCL/OpenCL.h>
 #import <sys/time.h>
 
-#import "Complex.h"
-#import "mandelbrot.cl.h"
-
-@interface AppDelegate ()
+@interface AppDelegate () <RenderContext>
 
 @property (nonatomic, strong) IBOutlet NSWindow *window;
 @property (nonatomic, weak) IBOutlet NSPopUpButton *algorithmType;
-@property (nonatomic, weak) IBOutlet MandelView *mandelView;
+@property (nonatomic, weak) IBOutlet NSView *containerView;
 @property (nonatomic, weak) IBOutlet NSTextField *statusField;
 
 @end
 
-@implementation AppDelegate
 
-#define MAX_ITER 20
+@implementation AppDelegate {
+	NSView *_renderView;
+	id <Renderer> _renderer;
+	id <MTLDevice> _metalDevice;
+}
 
-- (void)awakeFromNib {
-	CGLContextObj context = [[_mandelView openGLContext] CGLContextObj];
-	gcl_gl_set_sharegroup(CGLGetShareGroup(context));
+- (MandelView *)GLView {
+	if (![_renderView isKindOfClass:[MandelView class]])
+		return nil;
+
+	return (MandelView *)_renderView;
+}
+
+- (MetalTextureView *)metalView {
+	if (![_renderView isKindOfClass:[MetalTextureView class]])
+		return nil;
+
+	return (MetalTextureView *)_renderView;
+}
+
+- (void)allocateTextureWithHandler:(void (^)(GLuint, void (^)()))handler {
+	GLuint tid = [self.GLView allocateTextureWithData:NULL];
+	handler(tid, ^{
+		[self.GLView display];
+	});
+}
+
+- (void)renderedTexture:(id <MTLTexture>)texture {
+	self.metalView.texture = texture;
+}
+
+- (void)renderedBuffer:(RGBA *)data {
+	[self.GLView allocateTextureWithData:data];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
@@ -45,15 +75,7 @@
 	struct timeval start, end;
 	gettimeofday(&start, NULL);
 	
-	if ([_algorithmType indexOfSelectedItem] == 0) {
-		[self computeLinearly];
-	}
-	else if ([_algorithmType indexOfSelectedItem] == 1) {
-		[self computeUsingGCD];
-	}
-	else if ([_algorithmType indexOfSelectedItem] == 2) {
-		[self computeUsingCL];
-	}
+	[_renderer renderInContext:self];
 	
 	gettimeofday(&end, NULL);
 	
@@ -64,76 +86,76 @@
 }
 
 - (IBAction)clear:(id)sender {
-	[_mandelView clear];
-}
-
-- (void)computeLinearly {
-	RGB *data = malloc(sizeof(RGB) * IMAGE_SIZE * IMAGE_SIZE);
-	
-	for (int y = 0; y < IMAGE_SIZE; y++) {
-		for (int x = 0; x < IMAGE_SIZE; x++) {
-			plot_point(data, x, y, IMAGE_SIZE);
-		}
+	if (self.GLView) {
+		[self.GLView clear];
+	} else if (self.metalView) {
+		self.metalView.texture = nil;
 	}
-	
-	[_mandelView allocateTextureWithData:data];
-	free(data);
 }
 
-- (void)computeUsingGCD {
-	dispatch_queue_t queue = dispatch_queue_create("com.MattRajca.Mandelbrot.GCD", DISPATCH_QUEUE_CONCURRENT);
-	
-	RGB *data = malloc(sizeof(RGB) * IMAGE_SIZE * IMAGE_SIZE);
-	
-	dispatch_apply(IMAGE_SIZE, queue, ^(size_t y) {
-		for (int x = 0; x < IMAGE_SIZE; x++) {
-			plot_point(data, x, (int) y, IMAGE_SIZE);
-		}
-	});
-	
-	[_mandelView allocateTextureWithData:data];
-	free(data);
+- (void)_setUpGLRenderer {
+	[_renderView removeFromSuperview];
+
+	NSOpenGLPixelFormatAttribute attributes[] = {
+		NSOpenGLPFAAccelerated,
+		NSOpenGLPFADepthSize, 24,
+		NSOpenGLPFAColorSize, 32,
+		NSOpenGLPFAStencilSize, 16,
+		NSOpenGLPFADoubleBuffer,
+		0
+	};
+
+	NSOpenGLPixelFormat *pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes:attributes];
+	_renderView = [[MandelView alloc] initWithFrame:NSZeroRect pixelFormat:pixelFormat];
+
+	[self _addRenderView];
 }
 
-- (void)computeUsingCL {
-	dispatch_queue_t queue = gcl_create_dispatch_queue(CL_DEVICE_TYPE_GPU, 0);
-	
-	GLuint texture = [_mandelView allocateTextureWithData:NULL];
-	cl_image image = gcl_gl_create_image_from_texture(GL_TEXTURE_2D, 0, texture);
-	
-	dispatch_async(queue, ^{
-		cl_ndrange range = { 2, {0,0}, { IMAGE_SIZE, IMAGE_SIZE }, {0,0} };
-		mandelbrot_kernel(&range, image);
-	});
-	
-	dispatch_barrier_sync(queue, ^{
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[_mandelView display];
-		});
-	});
-	
-	gcl_release_image(image);
+- (void)_setUpMetalRenderer {
+	[_renderView removeFromSuperview];
+
+	_metalDevice = MTLCreateSystemDefaultDevice();
+	_renderView = [[MetalTextureView alloc] initWithFrame:NSZeroRect device:_metalDevice];
+
+	[self _addRenderView];
 }
 
-static void plot_point (RGB *data, int x, int y, int size) {
-	int depth = -1;
-	complex_t c = (complex_t) { x / (float) IMAGE_SIZE_3 - 2.0f, y / (float) IMAGE_SIZE_3 - 1.5f }, z = c;
-	
-	for (int i = 0; i < MAX_ITER; i++) {
-		z = complex_add(complex_square(z), c);
-		
-		if (z.real * z.real + z.imag * z.imag > 4) {
-			depth = i;
+- (void)_addRenderView {
+	_renderView.translatesAutoresizingMaskIntoConstraints = NO;
+
+	[_containerView addSubview:_renderView];
+
+	[NSLayoutConstraint constraintWithItem:_renderView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_containerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0].active = YES;
+	[NSLayoutConstraint constraintWithItem:_renderView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_containerView attribute:NSLayoutAttributeTop multiplier:1 constant:0].active = YES;
+	[NSLayoutConstraint constraintWithItem:_renderView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:_containerView attribute:NSLayoutAttributeLeading multiplier:1 constant:0].active = YES;
+	[NSLayoutConstraint constraintWithItem:_renderView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:_containerView attribute:NSLayoutAttributeTrailing multiplier:1 constant:0].active = YES;
+}
+
+- (IBAction)setUpRenderer:(id)sender {
+	switch ([_algorithmType indexOfSelectedItem]) {
+		case 0:
+			[self _setUpGLRenderer];
+			_renderer = [[LinearRenderer alloc] init];
 			break;
-		}
+		case 1:
+			[self _setUpGLRenderer];
+			_renderer = [[GCDRenderer alloc] init];
+			break;
+		case 2:
+			[self _setUpGLRenderer];
+			_renderer = [[CLRenderer alloc] init];
+			break;
+		case 3:
+			[self _setUpMetalRenderer];
+			_renderer = [[MetalRenderer alloc] init];
+			break;
+		default:
+			break;
 	}
-	
-	if (depth < 0) {
-		data[y * size + x] = (RGB) { 0.0f, 0.0f, 0.0f };
-	}
-	else {
-		data[y * size + x] = (RGB) { 0.0f, 1.0f / (20-depth) * 4, 1.0f / (20-depth) * 8 };
-	}
+}
+
+- (IBAction)prepare:(id)sender {
+	[_renderer prepare];
 }
 
 @end
