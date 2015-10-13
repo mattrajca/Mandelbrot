@@ -62,7 +62,7 @@ float spriteVertexData[16] = {
 	[self setNeedsDisplay:YES];
 }
 
-- (void)draw {
+- (void)drawRect:(NSRect)dirtyRect {
 	id <MTLCommandBuffer> commandBuffer = _commandQueue.commandBuffer;
 	commandBuffer.label = @"Drawing command buffer";
 
