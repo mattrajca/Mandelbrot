@@ -46,7 +46,7 @@ class MetalRenderer: NSObject, Renderer {
 		outputTextureDescriptor = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.RGBA8Unorm, width: 4096, height: 4096, mipmapped: false)
 		outputTextureDescriptor.resourceOptions = [.StorageModePrivate]
 		outputTextureDescriptor.storageMode = MTLStorageMode.Private
-		outputTextureDescriptor.usage = [.ShaderWrite]
+		outputTextureDescriptor.usage = [.ShaderWrite, .ShaderRead]
 
 		isPrepared = true
 	}
