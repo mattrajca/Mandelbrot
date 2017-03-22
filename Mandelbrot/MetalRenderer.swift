@@ -63,7 +63,8 @@ class MetalRenderer: NSObject, Renderer {
 		encoder.setComputePipelineState(computePipelineState)
 		encoder.setTexture(outTexture, atIndex: 0)
 
-		let threadGroupCount = MTLSizeMake(32, 32, 1)
+		// FIXME: Changed from 32 to 16 to prevent Run time error: threadGroupCount must be <= 512	
+		let threadGroupCount = MTLSizeMake(32, 16, 1)
 		let threadGroups = MTLSizeMake(outTexture.width / threadGroupCount.width, outTexture.height / threadGroupCount.height, 1)
 
 		encoder.dispatchThreadgroups(threadGroups, threadsPerThreadgroup: threadGroupCount)
