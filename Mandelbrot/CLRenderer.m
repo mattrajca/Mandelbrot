@@ -23,7 +23,7 @@
 - (void)renderInContext:(id<RenderContext>)context {
 	dispatch_queue_t queue = gcl_create_dispatch_queue(CL_DEVICE_TYPE_GPU, 0);
 
-	[context allocateTextureWithHandler:^(GLuint texture, void (^token)()) {
+    [context allocateTextureWithHandler:^(GLuint texture, void (^token)(void)) {
 		cl_image image = gcl_gl_create_image_from_texture(GL_TEXTURE_2D, 0, texture);
 
 		dispatch_async(queue, ^{

@@ -10,68 +10,69 @@ import Foundation
 import Metal
 
 class MetalRenderer: NSObject, Renderer {
-	private let device: MTLDevice
+    func render(in context: RenderContext!) {
+        guard let computePipelineState = computePipelineState else {
+            fatalError()
+        }
+        
+        let outTexture = device.makeTexture(descriptor: outputTextureDescriptor)
+        
+        let buffer = commandQueue.makeCommandBuffer()
+        let encoder = buffer?.makeComputeCommandEncoder()
+        encoder?.setComputePipelineState(computePipelineState)
+        encoder?.setTexture(outTexture, index: 0)
+        
+        let threadGroupCount = MTLSizeMake(32, 32, 1)
+        let threadGroups = MTLSizeMake((outTexture?.width)! / threadGroupCount.width, (outTexture?.height)! / threadGroupCount.height, 1)
+        
+        encoder?.dispatchThreadgroups(threadGroups, threadsPerThreadgroup: threadGroupCount)
+        encoder?.endEncoding()
+        
+        buffer?.commit()
+        buffer?.waitUntilCompleted()
+        
+        context.renderedTexture(outTexture)
+    }
+    
+    private let device: MTLDevice
 
-	private var commandQueue: MTLCommandQueue!
-	private var outputTextureDescriptor: MTLTextureDescriptor!
-	private var computePipelineState: MTLComputePipelineState?
+    private var commandQueue: MTLCommandQueue!
+    private var outputTextureDescriptor: MTLTextureDescriptor!
+    private var computePipelineState: MTLComputePipelineState?
 
-	@objc var isPrepared = false
+    @objc var isPrepared = false
 
-	init(device: MTLDevice) {
-		self.device = device
+    @objc init(device: MTLDevice) {
+        self.device = device
 
-		super.init()
-	}
+        super.init()
+    }
 
-	func prepare() {
-		guard let library = device.newDefaultLibrary() else {
-			fatalError("Could not get the default library")
-		}
+    func prepare() {
+        guard let library = device.makeDefaultLibrary() else {
+            fatalError("Could not get the default library")
+        }
 
-		guard let mandelbrotFunction = library.newFunctionWithName("mandelbrot") else {
-			fatalError("Could not get the mandelbrot function")
-		}
+        guard let mandelbrotFunction = library.makeFunction(name: "mandelbrot") else {
+            fatalError("Could not get the mandelbrot function")
+        }
 
-		device.newComputePipelineStateWithFunction(mandelbrotFunction) { state, error in
-			if let state = state {
-				self.computePipelineState = state
-			} else if let error = error {
-				print("Could not create the pipeline state: \(error)")
-			}
-		}
+        device.makeComputePipelineState(function: mandelbrotFunction) { state, error in
+            if let state = state {
+                self.computePipelineState = state
+            } else if let error = error {
+                print("Could not create the pipeline state: \(error)")
+            }
+        }
 
-		commandQueue = device.newCommandQueue()
+        commandQueue = device.makeCommandQueue()
 
-		outputTextureDescriptor = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.RGBA8Unorm, width: 4096, height: 4096, mipmapped: false)
-		outputTextureDescriptor.resourceOptions = [.StorageModePrivate]
-		outputTextureDescriptor.storageMode = MTLStorageMode.Private
-		outputTextureDescriptor.usage = [.ShaderWrite, .ShaderRead]
+        outputTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .rgba8Unorm, width: 4096, height: 4096, mipmapped: false)
+        outputTextureDescriptor.resourceOptions = [.storageModePrivate]
+        outputTextureDescriptor.storageMode = MTLStorageMode.private
+        outputTextureDescriptor.usage = [.shaderWrite, .shaderRead];
 
-		isPrepared = true
-	}
+        isPrepared = true
+    }
 
-	func renderInContext(context: RenderContext) {
-		guard let computePipelineState = computePipelineState else {
-			fatalError()
-		}
-
-		let outTexture = device.newTextureWithDescriptor(outputTextureDescriptor)
-
-		let buffer = commandQueue.commandBuffer()
-		let encoder = buffer.computeCommandEncoder()
-		encoder.setComputePipelineState(computePipelineState)
-		encoder.setTexture(outTexture, atIndex: 0)
-
-		let threadGroupCount = MTLSizeMake(32, 32, 1)
-		let threadGroups = MTLSizeMake(outTexture.width / threadGroupCount.width, outTexture.height / threadGroupCount.height, 1)
-
-		encoder.dispatchThreadgroups(threadGroups, threadsPerThreadgroup: threadGroupCount)
-		encoder.endEncoding()
-
-		buffer.commit()
-		buffer.waitUntilCompleted()
-
-		context.renderedTexture(outTexture)
-	}
 }

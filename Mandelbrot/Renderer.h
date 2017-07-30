@@ -13,7 +13,7 @@
 
 @protocol RenderContext
 
-- (void)allocateTextureWithHandler:(void(^)(GLuint, void(^)()))handler;
+- (void)allocateTextureWithHandler:(void(^)(GLuint, void(^)(void)))handler;
 
 - (void)renderedTexture:(id <MTLTexture>)texture;
 - (void)renderedBuffer:(RGBA *)data;
