@@ -76,7 +76,7 @@
 	return (MetalTextureView *)_renderView;
 }
 
-- (void)allocateTextureWithHandler:(void (^)(GLuint, void (^)()))handler {
+- (void)allocateTextureWithHandler:(void (^)(GLuint, void (^)(void)))handler {
 	GLuint tid = [self.GLView allocateTextureWithData:NULL];
 	handler(tid, ^{
 		[self.GLView display];
