@@ -209,6 +209,11 @@
 			attributes = {
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Matt Rajca";
+				TargetAttributes = {
+					C9E63787142C42E3006E365F = {
+						LastSwiftMigration = 0900;
+					};
+				};
 			};
 			buildConfigurationList = C9E63782142C42E3006E365F /* Build configuration list for PBXProject "Mandelbrot" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -389,6 +394,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mandelbrot/Mandelbrot-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -405,6 +411,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MattRajca.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mandelbrot/Mandelbrot-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
